@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Portal Mestre</h2>
+
+<div>
+    <h4>Alunos</h4>
+        <p>
+            @Html.ActionLink("Criar novo aluno", "Create", "Aluno") |
+            @Html.ActionLink("Ver Lista de alunos", "Index", "Aluno")
+        </p>
+    <hr />
+
+</div>
+<div>
+    <h4>Professores</h4>
+
+    <p>
+        @Html.ActionLink("Criar novo professor", "Create", "Professor") |
+        @Html.ActionLink("Ver Lista de Professores", "Index", "Professor")
+    </p>
+    <hr />
+
+</div>
+<div>
+    <h4>Disciplinas</h4>
+    <p>
+        @Html.ActionLink("Criar nova disciplina", "Create", "disciplinas") |
+        @Html.ActionLink("Ver Lista de disciplinas", "Index", "disciplinas")
+    </p>
+    <hr />
+
+</div>
+<div>
+    <h4>Cursos</h4>
+    <p>
+        @Html.ActionLink("Criar nova curso", "Create", "Cursos") |
+        @Html.ActionLink("Ver Lista de cursos", "Index", "Cursos")
+    </p>
+    <hr />
+
+</div>
+<div>
+    <h4>Trabalhos</h4>
+    <p>
+        @Html.ActionLink("Ver todos de Trabalhos", "Index", "Trabalhoes")
+    </p>
+    <hr />
+
+</div>
+
+

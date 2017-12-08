@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Portal.Models.Trabalho>
+
+@{
+    ViewBag.Title = "Trabalhos";
+}
+
+<h2>Trabalhos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataPublicacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataLimite)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.disciplina.nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataPublicacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataLimite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disciplina.nome)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Alterar Entrega", "Edit", new { id=item.codtrabalho }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.codtrabalho }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.codtrabalho })
+        </td>
+    </tr>
+}
+
+</table>

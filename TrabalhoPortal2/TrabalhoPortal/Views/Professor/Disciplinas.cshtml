@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Portal.Models.Disciplina>
+
+@{
+  ViewBag.Title = "Portal Professor";
+}
+
+<h2>Portal Professor</h2>
+<table class="table">
+
+
+    @foreach (var item in Model)
+    {
+            if (item.professor.codprofessor == (int)Session["id"])
+            {
+            <tr>
+                <th>
+                    @Html.DisplayFor(modelItem => item.nome)
+                </th>
+                <td>
+                    @Html.ActionLink("Cadastrar Trabalho", "Create/"+ item.coddisciplina, "Trabalhoes")
+                </td>
+             </tr>
+          }
+      }
+    
+
+</table>
+

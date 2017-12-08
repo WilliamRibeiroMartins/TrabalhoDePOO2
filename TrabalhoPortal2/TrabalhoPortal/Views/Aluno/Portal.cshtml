@@ -1,0 +1,73 @@
+﻿@model Portal.Models.ViewTrabalho
+
+@{
+  ViewBag.Title = "Portal Aluno";
+  int Contador = 0;
+}
+
+<h2>Portal Aluno</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Nome
+        </th>
+        <th>
+            Data Limite
+        </th>
+        <th>
+            Disciplina
+        </th>
+        <th>
+            Entrega
+        </th>
+    </tr>
+
+    @foreach(var item in Model.trabalhos)
+    {
+    <form action="/Aluno/Entrega" method="post" runat="server" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <tr>
+            <td>
+                <input type="hidden" id="Trabalho" name="Trabalho" value="@item.codtrabalho">
+                @Html.DisplayFor(modelItem => item.nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataLimite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.disciplina.nome)
+            </td>
+          @if (Model.Existe[Contador])
+          {
+            <td>
+                <input type="file" id="Entrega" name="Entrega" runat="server" accept="application/pdf">
+            </td>
+
+            <td>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Entrega" class="btn btn-sm btn-primary" />
+                    </div>
+                </div>
+            </td>
+          }
+          else
+          {
+            <td>
+              <input type="file" disabled id="Entrega" name="Entrega" runat="server" accept="application/pdf">
+            </td>
+
+            <td>
+              <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                  <input disabled type="submit" value="Trabalho Entregue" class="btn btn-sm btn-primary" />
+                </div>
+              </div>
+            </td>
+          }
+        </tr>
+    </form>
+      Contador++;
+    }
+</table>

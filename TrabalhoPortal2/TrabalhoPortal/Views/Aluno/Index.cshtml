@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Portal.Models.Aluno>
+
+@{
+    ViewBag.Title = "Alunos";
+}
+
+<h2>Lista de Alunos</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.matricula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cpf)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.curso.nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.matricula)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cpf)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.curso.nome)
+        </td>
+        <td>
+            @Html.ActionLink("Adicionar Disciplina", "AssociarDisc", new { id = item.codaluno }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.codaluno }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.codaluno }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.codaluno })
+        </td>
+    </tr>
+}
+
+</table>

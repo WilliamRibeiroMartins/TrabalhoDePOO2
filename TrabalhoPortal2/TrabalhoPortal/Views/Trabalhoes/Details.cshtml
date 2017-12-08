@@ -1,0 +1,60 @@
+﻿@model Portal.Models.ViewTrabalhosEntregues
+
+@{
+  ViewBag.Title = "Detalhes";
+  string caminho = "C:\\PortalTrabalhos\\" + Model.trabalho.codtrabalho + "-" + Model.trabalho.professor.codprofessor + "-" + Model.trabalho.disciplina.coddisciplina+"\\"+Model.trabalho.nome+"-";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>Trabalho</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.trabalho.nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trabalho.nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trabalho.DataPublicacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trabalho.DataPublicacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trabalho.DataLimite)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trabalho.DataLimite)
+        </dd>
+
+    </dl>
+</div>
+<div>
+  <h4>Trabalhos entregues</h4>
+  <hr />
+  @if (Model.Alunos != null)
+  {
+    foreach (var x in Model.Alunos)
+    {
+      
+    <p><a href="@caminho@x" download>@x.Split('.')[0]</a></p>
+    }
+  }
+  else
+  {
+    <p>Nenhum trabalho entregue</p>
+  }
+  <hr />
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.trabalho.codtrabalho }) |
+  @Html.ActionLink("Voltar", "Trabalhos", "Trabalhoes")
+</p>

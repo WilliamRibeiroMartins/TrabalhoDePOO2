@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Portal Trabalhos</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/Styles.css">
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Portal Trabalhos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">
+                        @if (!Convert.ToBoolean(Session["logado"]))
+                        {
+                        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+                        }
+                        else
+                        {
+                        <li> @Html.ActionLink("Logoff", "Index", "Home")</li>
+                            if (Session["tipo"].ToString().Equals("Professor"))
+                            {
+                            <li>@Html.ActionLink("Portal do " + Session["Tipo"].ToString(), "Portal"+Session["Tipo"].ToString(), Session["Tipo"].ToString())</li>
+                            }
+                            else if (Session["tipo"].ToString().Equals("Aluno"))
+                            {
+                                <li>@Html.ActionLink("Portal do " + Session["Tipo"].ToString(), "Portal", Session["Tipo"].ToString())</li>
+                            }
+                            else
+                            {
+                            <li>@Html.ActionLink("Portal do " + Session["Tipo"].ToString(), "PortalMaster", "Home")</li>
+                            }
+                        }
+
+                        <li></li>
+
+                    </ul>
+                </ul>
+
+                @if (Convert.ToBoolean(Session["logado"]))
+                {
+                <p class="navbar-text navbar-right">Bem Vindo, @Session["nome"]</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Portal Trabalhos</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

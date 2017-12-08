@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Portal.Models.Trabalho>
+
+@{
+  ViewBag.Title = "Trabalhos";
+}
+
+<h2>Trabalhos</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataPublicacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataLimite)
+        </th>
+        <th>
+            Disciplina
+        </th>
+        <th>
+            Professor
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataPublicacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataLimite)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.disciplina.nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.professor.nome)
+        </td>
+        <td>
+
+        </td>
+    </tr>
+    }
+
+</table>

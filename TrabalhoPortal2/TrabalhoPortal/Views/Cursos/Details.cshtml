@@ -1,0 +1,42 @@
+﻿@model Portal.Models.Curso
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+<div>
+	<h3>Curso</h3>
+	<table>
+			<tr>
+				<th>
+                    <h4>Nome</h4>
+				</th>
+			</tr>
+			<tr>
+				<t>
+					@Html.DisplayFor(model => model.nome)
+				</t>
+			</tr>
+
+	</table>
+<div>
+    <hr />
+	<h4>Disciplinas</h4>
+	<table>
+		@foreach (var item in Model.disciplinas)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.nome) | @Html.ActionLink("Desassociar", "Desassociar", new { coddisciplina = item.coddisciplina, codcurso = Model.codcurso })
+				</td>
+			</tr>
+		}
+
+	</table>
+</div>
+	<hr />
+	<p>
+		@Html.ActionLink("Edit", "Edit", new { id = Model.codcurso }) |
+		@Html.ActionLink("Voltar", "Index")
+	</p>

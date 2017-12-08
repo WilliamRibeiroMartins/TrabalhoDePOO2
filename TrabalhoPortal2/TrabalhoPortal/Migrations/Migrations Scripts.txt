@@ -1,0 +1,40 @@
+﻿--------------Arquivo explicativo para Migrations---------------
+ ---- Configuration------
+ O Configuration serve para indicar como será o padrao de uma base migrada.
+ Primeiro, se ela será autoMigrada ou não (Isso verificará se a base tem alguma alteração que seja necessaria para o codigo)
+ Segundo, o metodo Seed que (pelo meu entendimento) será como a base virá por padrao, ou seja, Preencherá a base com objetos padrão
+ isso deixará nossos testes mais dinamicos e eficazes. 
+
+
+ -----Migration-------
+ A migration Inicial indica como vai ser o banco (tabelas, colunas, pk's e fk's). Sempre que for alterado algo no codigo que 
+ precise ser alterado no banco, deve se alterar a migration inicial e executar os seguintes comandos:
+
+ Update-Database –TargetMigration: "Nome da Migration"
+
+ ou (caso não exista varias Migrations)
+
+ Update-Database
+
+
+
+ Para criar a Migration nova:
+
+ add-Migration "Nome"
+
+Ele irá aplicar as mudanças necessarias no banco.
+
+
+
+Ps.: Não tenho certeza de tudo, os testes que eu fiz funcionaram e por isso estou escrevendo esse tutorial de Migrations aqui.
+
+Informações uteis:
+
+Update-database -TargetMigration:0 Para resetar o banco.
+
+Para cada alteração no banco de dados, drop a tabela, crie uma nova migration e use o comando update-database
+
+Caso tenha problemas para dropar a tabela, abra o sql server Configuration Manager e pare o processo Sql Server (SQLEXPRESS)
+
+
+Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=TrabalhoPortal.Controllers.EscolaContext;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework
